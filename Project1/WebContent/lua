@@ -1,0 +1,46 @@
+str = ""
+machine = {}  
+-- a simple http server
+srv = net.createServer(net.TCP)
+srv:listen(80, function(conn)
+        conn:on("receive", function(sck, payload)
+            print(payload)
+            str = "" 
+            for k, v in pairs(machine) do 
+                str = str .. v
+            --    print(k, v)
+            end
+            sck:send(
+            "HTTP/1.0 200 OK\r\n" .. 
+            "Content-Length: " .. string.len(str) .. "\r\n" .. 
+            "Content-Type: text/html\r\n\r\n" .. str)
+        end)
+    conn:on("sent", function(sck) sck:close() end)
+end)
+
+-- uart.setup(id, baud, databits, parity, stopbits, echo)
+uart.setup(0, 38400, 8, 1, 0, 0);
+-- when 4 chars is received.
+--  uart.on("data", 4,
+-- when '\r' is received.
+uart.on("data", "\n",
+  function(data)
+    print("receive from uart:", data)
+    str = data
+    id, time, drip, rssi = string.match(data, "ID:(%x+)%s*Time:(%x+)%s*Drip:(%x+)%s*RSSI:(%x+)")
+    
+    --print(dat)
+    print("XD", id, time, drip, rssi)
+    if id ~= nil then
+        if machine[id] ~= drip then
+            conn=net.createConnection(net.TCP, false) 
+            conn:on("receive", function(conn, pl) print(pl) end)
+            conn:connect(8080,"ssuyu.ddns.net/Project1/upload")
+            conn:send("GET " .. "/" .. id .. "," .. time .. "," .. drip .. "," .. rssi .. " HTTP/1.1\r\nHost: ssuyu.ddns.net/Project1/upload\r\n" .."Connection: close\r\nAccept: */*\r\n\r\n")
+        end
+        machine[id] = drip
+    end
+    if data=="quit" then
+      uart.on("data") -- unregister callback function
+    end
+end, 0)
