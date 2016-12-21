@@ -11,7 +11,7 @@ public class Jdbc {
 		String driver = "com.mysql.jdbc.Driver"; 
         String url = "jdbc:mysql://localhost:3306/?useSSL=false"; 
         String user = ""; 
-        String password = ""; 
+        String password = ""; //test
         Connection conn = null;
 
         try { 
