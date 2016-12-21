@@ -7,7 +7,6 @@ import com.model.Ibeacon;
 import com.opensymphony.xwork2.ActionSupport;
 import com.service.DRPService;
 import com.service.IbeaconSerivce;
-import com.service.PatientService;
 
 public class IbeaconAction extends ActionSupport {
 
@@ -63,7 +62,7 @@ public class IbeaconAction extends ActionSupport {
 			msg = "該ibeacon已配對或使用中";
 			return "setIbeaconFail";
 		}else{
-			PatientService patientService = new PatientService();
+//			PatientService patientService = new PatientService();
 			String result1 = ibeaconService.updateIbeaconStatus(ibeaconId);
 			DRPService drpService= new DRPService();
 			ArrayList<String> drug = new ArrayList<String>();

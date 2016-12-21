@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.model.Patient;
 import com.uilts.Util;
 
 public class DRPDaoImpl {
