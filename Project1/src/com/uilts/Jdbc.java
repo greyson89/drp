@@ -9,9 +9,9 @@ public class Jdbc {
 	public Connection getConn(){
 		
 		String driver = "com.mysql.jdbc.Driver"; 
-        String url = "jdbc:mysql://localhost:3306/?useSSL=false"; 
-        String user = ""; 
-        String password = ""; //test
+        String url = "jdbc:mysql://ssuyu.ddns.net:3306/project1?useSSL=false"; 
+        String user = "root"; 
+        String password = "toor"; //test
         Connection conn = null;
 
         try { 

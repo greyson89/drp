@@ -25,6 +25,9 @@ public class UploadDataAction extends ActionSupport {
 			System.out.println("get all parameter name =>"+s);
 		}
 		
+		
+		
+		
 		System.out.println("upload test");
 		System.out.println("id = "+id);
 		System.out.println("time = "+time);

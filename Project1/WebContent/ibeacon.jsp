@@ -17,10 +17,10 @@
 	
 <table width="100%">
 	<tr>
-		<td width="20%">
+		<td style="width:300px">
 				<jsp:include page="index.jsp"></jsp:include>		
 		</td>
-		<td width="40%">
+		<td style="width:500px">
 							<h1>ibeacon配對管理</h1><br/>
 							<s:form action="loadIbeaconHistory" theme="simple">
 							<label>讀取  病患過往資料								<font color="red">${searchResult}</font></label>
@@ -116,7 +116,7 @@
 					  
 					  
 		</td>
-		<td width="40%">
+		<td style="width:224px">
 <!-- 			保留 -->
 		</td>
 	</tr>

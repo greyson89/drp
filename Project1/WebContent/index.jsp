@@ -48,12 +48,6 @@
 
 
 
-<a href="${page1}">page1</a>
-<a href="${page2}">page2</a>
-<a href="${page3}">page3</a>
-
-
-
 
 <!-- <ul>   -->
 <%--   <s:url action="list_leagues" var="list_leagues_url"/> --%>
