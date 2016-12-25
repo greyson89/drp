@@ -20,6 +20,7 @@ public class UploadDataAction extends ActionSupport {
 		String time = request.getParameter("time");
 		String drip = request.getParameter("drip");
 		String rssi = request.getParameter("rssi");
+		String ip = request.getParameter("ip");
 		Map<String, String[]> m = request.getParameterMap();
 		for(String s :m.keySet()){
 			System.out.println("get all parameter name =>"+s);
@@ -33,11 +34,13 @@ public class UploadDataAction extends ActionSupport {
 		System.out.println("time = "+time);
 		System.out.println("drip = "+drip);
 		System.out.println("rssi = "+rssi);
+		System.out.println("ip = "+ip);
 		
 		request.setAttribute("id", id);
 		request.setAttribute("time", time);
 		request.setAttribute("drip", drip);
 		request.setAttribute("rssi", rssi);
+		request.setAttribute("ip", ip);
 		
 		
 		return "success";

@@ -18,7 +18,7 @@
 	<h1>time =  ${ time }</h1>
 	<h1>drip = ${ drip}</h1>
 	<h1>rssi = ${ rssi}</h1>
-	
+	<h1>ip = ${ ip}</h1>
 	
 
 </body>
