@@ -2390,7 +2390,7 @@ output {
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
-  /* cursor: not-allowed; */
+  cursor: not-allowed;
   background-color: #eee;
   opacity: 1;
 }
@@ -2470,19 +2470,19 @@ input[type="radio"].disabled,
 input[type="checkbox"].disabled,
 fieldset[disabled] input[type="radio"],
 fieldset[disabled] input[type="checkbox"] {
-  /* cursor: not-allowed; */
+  cursor: not-allowed;
 }
 .radio-inline.disabled,
 .checkbox-inline.disabled,
 fieldset[disabled] .radio-inline,
 fieldset[disabled] .checkbox-inline {
-  /* cursor: not-allowed; */
+  cursor: not-allowed;
 }
 .radio.disabled label,
 .checkbox.disabled label,
 fieldset[disabled] .radio label,
 fieldset[disabled] .checkbox label {
-  /* cursor: not-allowed; */
+  cursor: not-allowed;
 }
 .form-control-static {
   padding-top: 7px;
@@ -2796,7 +2796,7 @@ select[multiple].form-group-lg .form-control {
 .btn[disabled],
 fieldset[disabled] .btn {
   pointer-events: none;
-  /* cursor: not-allowed; */
+  cursor: not-allowed;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -3254,7 +3254,7 @@ tbody.collapse.in {
 .dropdown-menu > .disabled > a:hover,
 .dropdown-menu > .disabled > a:focus {
   text-decoration: none;
-  /* cursor: not-allowed; */
+  cursor: not-allowed;
   background-color: transparent;
   background-image: none;
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -3663,7 +3663,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li.disabled > a:focus {
   color: #777;
   text-decoration: none;
-  /* cursor: not-allowed; */
+  cursor: not-allowed;
   background-color: transparent;
 }
 .nav .open > a,
@@ -4435,7 +4435,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .disabled > a:hover,
 .pagination > .disabled > a:focus {
   color: #777;
-  /* cursor: not-allowed; */
+  cursor: not-allowed;
   background-color: #fff;
   border-color: #ddd;
 }
@@ -4504,7 +4504,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pager .disabled > a:focus,
 .pager .disabled > span {
   color: #777;
-  /* cursor: not-allowed; */
+  cursor: not-allowed;
   background-color: #fff;
 }
 .label {
@@ -4924,7 +4924,7 @@ a.list-group-item:focus {
 .list-group-item.disabled:hover,
 .list-group-item.disabled:focus {
   color: #777;
-  /* cursor: not-allowed; */
+  cursor: not-allowed;
   background-color: #eee;
 }
 .list-group-item.disabled .list-group-item-heading,

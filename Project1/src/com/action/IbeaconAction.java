@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import com.model.Ibeacon;
 import com.opensymphony.xwork2.ActionSupport;
-import com.service.DRPService;
 import com.service.IbeaconSerivce;
+import com.service.PatientService;
 
 public class IbeaconAction extends ActionSupport {
 
@@ -63,15 +63,15 @@ public class IbeaconAction extends ActionSupport {
 			return "setIbeaconFail";
 		}else{
 //			PatientService patientService = new PatientService();
-			String result1 = ibeaconService.updateIbeaconStatus(ibeaconId);
-			DRPService drpService= new DRPService();
+			String result1 = ibeaconService.updateIbeaconStatus(ibeaconId,"PENDING","READY");
+			PatientService patientService= new PatientService();
 			ArrayList<String> drug = new ArrayList<String>();
 			ArrayList<BigDecimal> drugCc = new ArrayList<BigDecimal>();
 			drug.add(drugId1);
 			drug.add(drugId2);
 			drugCc.add(drugCc1);
 			drugCc.add(drugCc2);
-			String result2 = drpService.insertDRP(patientId,ibeaconId,bedId,speed,drug,drugCc);
+			String result2 = patientService.insertPatientSub(patientId,ibeaconId,bedId,speed,drug,drugCc);
 			if(result1.indexOf("ERROR")!=-1){
 				msg=result1;
 				return "setIbeaconFail";

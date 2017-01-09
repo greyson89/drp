@@ -1,6 +1,8 @@
 package com.service;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -85,6 +87,29 @@ public class PatientService {
 	}
 
 	
-	
+	public String insertPatientSub(String patientId,String ibeaconId,String bedId,BigDecimal speed,ArrayList<String> drug,ArrayList<BigDecimal> drugCc) {
+		
+		if(patientId.equals("") && ibeaconId.equals("")){
+			return "ERROR 病患與ibeacon輸入資料不全";
+		}
+		
+		
+		PatientDaoImpl dao = new PatientDaoImpl();
+//		Patient model = null;
+		try {
+			boolean result = dao.insertPatientSub(patientId,ibeaconId,bedId,speed,drug,drugCc);
+			if(result){
+				return "修改病患完成";
+			}else{
+				return "ERROR 未知錯誤";
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return "ERROR 未知錯誤";
+		
+		
+	}
 	
 }

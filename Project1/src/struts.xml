@@ -56,6 +56,10 @@
     	<action name="upload" class="com.action.UploadDataAction">
     		<result name="success">/uploadTest.jsp</result>
     	</action>
+    	<action name="uploadConfirm" class="com.action.UploadDataAction" method="uploadConfirm">
+    		<result name="confirmSuccess">/uploadConfirm.jsp</result>
+    	</action>
+    	
     	
     	
     	

@@ -13,7 +13,7 @@
   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 </head>
 <body>
-	
+	<h1>status = ${status }</h1>
 	<h1>id = ${ id}</h1>
 	<h1>time =  ${ time }</h1>
 	<h1>drip = ${ drip}</h1>

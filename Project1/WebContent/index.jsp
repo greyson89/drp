@@ -5,13 +5,23 @@
 
 <head>
   <title>首頁 - 點滴監控系統</title>
-  <link rel="stylesheet" type="text/css" href="js/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="js/css/bootstrap-theme.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
-  <script src="/js/js/bootstrap.js"></script>
+  <script src="bootstrap/js/bootstrap.js"></script>
   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 </head>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	
+});
+
+
+</script>
+
 
 <s:url action="mainAction" var="main"  >
 	<s:param name="actionType">main</s:param>
@@ -30,9 +40,9 @@
 
 <body bgcolor='white'>
 
-<div class="container-fluid" style="margin:10px">
+<div class="container-fluid" style="margin:20px">
 <div class="row">
-  <div class="col-xs-12 col-md-4">
+  <div class="col-xs-12 col-md-8">
     <div class="list-group">
       <a href="${main}" class="list-group-item">首頁</a>
       <a href="${monitor }" class="list-group-item">X即時監控</a>
