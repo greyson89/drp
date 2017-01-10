@@ -9,6 +9,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.service.UploadService;
+import com.uilts.Log;
 
 public class UploadDataAction extends ActionSupport {
 
@@ -26,17 +27,18 @@ public class UploadDataAction extends ActionSupport {
 		//TODO 有問題
 		UploadService service = new UploadService();
 		boolean status = service.checkIbeaconStatus(id,"WORKING");
-		System.out.println("boolean ="+status);
+		Log.info(getClass(),id +" 是否已是WORKING = "+status);
 		if(status==true){
 			service.insertIbeaconLog(id,drip,time,rssi,ip);
 		}
 				
-		System.out.println("status = "+status);
-		System.out.println("id = "+id);
-		System.out.println("time = "+time);
-		System.out.println("drip = "+drip);
-		System.out.println("rssi = "+rssi);
-		System.out.println("ip = "+ip);
+		Log.info(getClass(),"status = "+status );
+		Log.info(getClass(),"id = "+id );
+		Log.info(getClass(),"time = "+time );
+		Log.info(getClass(),"drip = "+drip );
+		Log.info(getClass(),"rssi = "+rssi );
+		Log.info(getClass(),"ip = "+ip );
+		
 		
 		request.setAttribute("status", status);
 		request.setAttribute("id", id);
@@ -60,14 +62,18 @@ public class UploadDataAction extends ActionSupport {
 		
 		UploadService service = new UploadService();
 		boolean status = service.checkIbeaconStatus(ibeaconId,"READY");
-		System.out.println("boolean = "+status);
+		Log.info(getClass(), ibeaconId+ " 是否已在READY狀態 = "+status);
 		if(status==true){
 			service.updateIbeaconStatus(ibeaconId,"READY","WORKING");
+			service.updatePatientSubStatus(ibeaconId, "READY", "WORKING");
 		}
-		
 		
 		return "confirmSuccess";
 	}
 	
+	public String uploadTestPage(){
+		
+		return "success";
+	}
 	
 }

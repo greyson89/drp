@@ -8,7 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.model.Ibeacon;
+import com.model.IbeaconLog;
+import com.model.PatientSub;
+import com.uilts.Log;
 import com.uilts.Util;
 
 public class IbeaconDaoImpl {
@@ -17,7 +19,7 @@ public class IbeaconDaoImpl {
 
 	public String checkIbeaconStatus(String ibeaconId) throws SQLException {
 		
-		System.out.println("ibeaconId = "+ibeaconId);
+		Log.info(getClass(), "ibeaconId = "+ibeaconId);
 		StringBuffer sql = new StringBuffer();
 		sql.append("select status from t_drp_ibeacon_status   ");
 		sql.append(" where ibeacon_id = '"+ibeaconId+"'  ");
@@ -55,14 +57,13 @@ public class IbeaconDaoImpl {
 		
 		StringBuffer sql = new StringBuffer();
 		sql.append("update t_drp_ibeacon_status  set status='"+newStatus+"' where    ibeacon_id ='"+ibeaconId+"'   and  status='"+oldStatus+"'  ");
-		System.out.println(sql.toString());
+		Log.info(getClass(), sql.toString());
 		PreparedStatement ps = null;
 		Connection conn = Util.getConn();
 		try{
 			
 			//TODO 異常 暫時不理會
-			System.out.println(sql.toString());
-			System.out.println("ibeacon_id="+ibeaconId);
+			Log.info(getClass(), "ibeacon_id="+ibeaconId);
 			ps = conn.prepareStatement(sql.toString());
 			
 			
@@ -81,26 +82,28 @@ public class IbeaconDaoImpl {
 		return true;
 	}
 
-	public void insertIbeaconLog(String ibeaconId, BigDecimal drip, int timeClock, BigDecimal rssi, String ip) throws SQLException {
+	public void insertIbeaconLog(String ibeaconId, BigDecimal drip, int timeClock,BigDecimal speed, BigDecimal rssi, String ip) throws SQLException {
 		
 		StringBuffer sql = new StringBuffer();
-		sql.append(" insert into t_drp_ibeacon_log (ibeacon_id,speed,drip,time_clock,insert_time,rssi_ip,rssi) ");
-		sql.append(" values(?,?,?,?,?,?,?)");
+		sql.append(" insert into t_drp_ibeacon_log (ibeacon_id,speed,drip,time_clock,insert_time,rssi_ip,rssi,history_flag) ");
+		sql.append(" values(?,?,?,?,?,?,?,?)");
 		
 		PreparedStatement ps = null;
 		Connection conn = Util.getConn();
 		try{
-			System.out.println(sql.toString());
-			System.out.println("ibeacon_id="+ibeaconId);
+			
+			Log.info(getClass(), sql.toString());
+			Log.info(getClass(), "ibeacon_id="+ibeaconId);
 			ps = conn.prepareStatement(sql.toString());
 			ps.setString(1, ibeaconId);
-//			ps.setBigDecimal(2, speed);
+			ps.setBigDecimal(2, speed);
 			ps.setBigDecimal(3, drip);
 			ps.setInt(4,timeClock);
 			ps.setDate(5, new Date(new java.util.Date().getTime()));
 			ps.setString(6,ip);
 			ps.setBigDecimal(7, rssi);
-					
+			ps.setInt(8, 0);
+			ps.addBatch();
 			ps.executeBatch();
 		}catch(Exception e ){
 			e.printStackTrace();
@@ -111,6 +114,55 @@ public class IbeaconDaoImpl {
 		
 		
 		
+		
+	}
+
+	public IbeaconLog loadPreIbeaconLog(String ibeaconId, BigDecimal drip, int timeClock, int historyFlag) throws SQLException {
+		//history_flag = 0
+		
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append(" select * from t_drp_ibeacon_log  ");
+		sql.append(" where  ibeacon_id = ?  ");
+		sql.append(" and drip < ?   ");
+		sql.append(" and time_clock < ?  ");
+		sql.append(" and history_flag = ?   ");
+		sql.append(" order by id desc");
+		
+		PreparedStatement ps = null;
+		Connection conn = Util.getConn();
+		try{
+			Log.info(getClass(), sql.toString());
+			Log.info(getClass(), "ibeacon_id="+ibeaconId);
+			ps = conn.prepareStatement(sql.toString());
+			ps.setString(1, ibeaconId);
+			ps.setBigDecimal(2, drip);
+			ps.setInt(3,timeClock);
+			ps.setInt(4, historyFlag);
+			ResultSet result = ps.executeQuery();
+			IbeaconLog model = null;
+			
+			while(result.next()){
+				model = new IbeaconLog();
+				model.setId(result.getInt("id"));
+				model.setIbeaconId(result.getString("ibeacon_id"));
+				model.setSpeed(result.getBigDecimal("speed"));
+				model.setDrip(result.getBigDecimal("drip"));
+				model.setTimeClock(result.getInt("time_clock"));
+				model.setInsertTime(result.getDate("insert_time"));
+				model.setRssiIp(result.getString("rssi_ip"));
+				model.setRssi(result.getBigDecimal("rssi"));
+				model.setHistoryFlag(result.getInt("history_flag"));
+				break;
+			}
+			return model;
+		}catch(Exception e ){
+			e.printStackTrace();
+		}finally {
+			ps.close();
+			conn.close();
+		}
+		return null;
 		
 	}
 	

@@ -3,7 +3,7 @@ package com.action;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import com.model.Ibeacon;
+import com.model.PatientSub;
 import com.opensymphony.xwork2.ActionSupport;
 import com.service.IbeaconSerivce;
 import com.service.PatientService;
@@ -33,7 +33,7 @@ public class IbeaconAction extends ActionSupport {
 		}
 
 		IbeaconSerivce service = new IbeaconSerivce();
-		Ibeacon model = service.loadHistory(searchPatientId, searchRunId);
+		PatientSub model = service.loadHistory(searchPatientId, searchRunId);
 		if (model == null) {
 			searchResult = "該資料不存在";
 			return "loadIbeaconFail";

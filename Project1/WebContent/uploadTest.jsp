@@ -13,13 +13,34 @@
   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 </head>
 <body>
-	<h1>status = ${status }</h1>
-	<h1>id = ${ id}</h1>
-	<h1>time =  ${ time }</h1>
-	<h1>drip = ${ drip}</h1>
-	<h1>rssi = ${ rssi}</h1>
-	<h1>ip = ${ ip}</h1>
+	<h2>是否存入DB = ${status }</h2>
+	<h2>id = ${ id}</h2>
+	<h2>time =  ${ time }</h2>
+	<h2>drip = ${ drip}</h2>
+	<h2>rssi = ${ rssi}</h2>
+	<h2>ip = ${ ip}</h2>
 	
-
+	<s:form action="uploadConfirm"  >
+		ibeaconId = <s:textfield name="ibeaconId"/>
+		<s:submit />
+	</s:form>
+	<br/>
+	
+	<s:form action="upload"  >
+		<table>
+		<tr>
+			<td>id = <s:textfield name="id"/>	</td>
+			<td>drip = <s:textfield name="drip"/></td>
+		</tr>
+		<tr>
+			<td>time = <s:textfield name="time"/></td>
+			<td>rssi = <s:textfield name="rssi"/><br/></td>
+		</tr>
+		<tr>
+			<td>ip = <s:textfield name="ip"/></td>
+			<td><s:submit /></td>
+		</tr>
+		</table>
+	</s:form>
 </body>
 </html>

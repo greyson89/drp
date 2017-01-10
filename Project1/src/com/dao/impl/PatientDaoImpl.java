@@ -9,8 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.model.BaseData;
-import com.model.Ibeacon;
+import com.model.PatientSub;
 import com.model.Patient;
 import com.uilts.Util;
 
@@ -163,7 +162,7 @@ public class PatientDaoImpl {
 	
 	
 	
-	public Ibeacon loadHistory(String patientId,int runId) throws SQLException{
+	public PatientSub loadHistory(String patientId,int runId) throws SQLException{
 			
 			StringBuffer sql = new StringBuffer();
 			sql.append("select * from t_drp_patient_sub t where 1=1  ");
@@ -180,10 +179,10 @@ public class PatientDaoImpl {
 			try{
 				ps = conn.createStatement();
 				ResultSet result = ps.executeQuery(sql.toString());
-				Ibeacon model = null;
+				PatientSub model = null;
 				
 				while(result.next()){
-					model = new Ibeacon();
+					model = new PatientSub();
 					
 					model.setRunId( result.getInt("run_id") );
 					model.setPatientId( result.getString("patient_id") );
@@ -261,6 +260,39 @@ public class PatientDaoImpl {
 		return false;
 	}
 
+	
+public boolean updatePatientSubStatus(String ibeaconId, String oldStatus,String newStatus) throws SQLException {
+		
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("update t_drp_patient_sub set  status = ?  "); 
+		sql.append("where ibeacon_id = ? and status=? ");
+		PreparedStatement ps = null;
+		Connection conn = Util.getConn();
+		try{
+	        ps = conn.prepareStatement(sql.toString());
+	        ps.setString(1, newStatus );
+	        ps.setString(2, ibeaconId );
+	        ps.setString(3, oldStatus );
+	        
+	        ps.addBatch();
+	        
+	        ps.executeBatch();
+	        
+	        return true;
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			ps.close();
+			conn.close();
+		}
+		
+		
+		return false;
+	}
+	
+	
+	
 	public int getRunId(String patiendId) throws SQLException{
 		
 		

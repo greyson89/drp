@@ -3,7 +3,7 @@ package com.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Ibeacon {
+public class PatientSub {
 
 	private int runId;
 	private String patientId;

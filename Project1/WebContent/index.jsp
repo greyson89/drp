@@ -35,6 +35,7 @@ $(document).ready(function(){
 <s:url action="mainAction" var="ibeacon" >
 	<s:param name="actionType">ibeacon</s:param>
 </s:url>
+<s:url action="uploadTest" var="uploadTest"/>
 
 
 
@@ -48,6 +49,7 @@ $(document).ready(function(){
       <a href="${monitor }" class="list-group-item">X即時監控</a>
       <a href="${patient }" class="list-group-item">病患資料</a>
       <a href="${ibeacon }" class="list-group-item">ibeacon配對管理</a>
+      <a href="${uploadTest }" class="list-group-item">上傳測試</a>
       <a href="#" class="list-group-item">X歷史紀錄</a>
       <a href="#" class="list-group-item">X位置圖</a>
     </div>

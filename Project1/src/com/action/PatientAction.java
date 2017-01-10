@@ -9,6 +9,7 @@ import org.apache.struts2.ServletActionContext;
 import com.model.Patient;
 import com.opensymphony.xwork2.ActionSupport;
 import com.service.PatientService;
+import com.uilts.Log;
 
 public class PatientAction extends ActionSupport {
 
@@ -53,10 +54,10 @@ public class PatientAction extends ActionSupport {
 
 	public String addPatient() {
 
-		System.out.println("new");
+		Log.info(getClass(),"new add patient");
 		PatientService service = new PatientService();
 		String result = service.addPatient(patientId, patientName, idcardNumber, phoneNumber);
-		System.out.println("# "+result);
+		Log.info(getClass(),"new add patient result = "+result);
 		if(result.indexOf("ERROR")!=-1){
 			msg=result;
 			return "addPatientFail";
@@ -68,10 +69,10 @@ public class PatientAction extends ActionSupport {
 
 	public String editPatient() {
 
-		System.out.println("edit");
+		Log.info(getClass(),"edit patient");
 		HttpServletRequest request = ServletActionContext.getRequest();
 		PatientService service = new PatientService();
-		System.out.println("#edit id="+id);
+		Log.info(getClass(),"edit patient id = "+id);
 		String result = service.editPatient(id,patientId, patientName, idcardNumber, phoneNumber);
 		if(result.indexOf("ERROR")!=-1){
 			msg=result;

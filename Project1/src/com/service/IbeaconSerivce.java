@@ -4,11 +4,11 @@ import java.sql.SQLException;
 
 import com.dao.impl.IbeaconDaoImpl;
 import com.dao.impl.PatientDaoImpl;
-import com.model.Ibeacon;
+import com.model.PatientSub;
 
 public class IbeaconSerivce {
 	
-	public Ibeacon loadHistory(String patientId,int runId){
+	public PatientSub loadHistory(String patientId,int runId){
 		
 		PatientDaoImpl dao = new PatientDaoImpl();
 		
