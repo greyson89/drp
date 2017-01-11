@@ -27,17 +27,17 @@ public class UploadDataAction extends ActionSupport {
 		//TODO 有問題
 		UploadService service = new UploadService();
 		boolean status = service.checkIbeaconStatus(id,"WORKING");
-		Log.info(getClass(),id +" 是否已是WORKING = "+status);
+		Log.info(getClass().getSimpleName(),id +" 是否已是WORKING = "+status);
 		if(status==true){
 			service.insertIbeaconLog(id,drip,time,rssi,ip);
 		}
 				
-		Log.info(getClass(),"status = "+status );
-		Log.info(getClass(),"id = "+id );
-		Log.info(getClass(),"time = "+time );
-		Log.info(getClass(),"drip = "+drip );
-		Log.info(getClass(),"rssi = "+rssi );
-		Log.info(getClass(),"ip = "+ip );
+		Log.info(getClass().getSimpleName(),"status = "+status );
+		Log.info(getClass().getSimpleName(),"id = "+id );
+		Log.info(getClass().getSimpleName(),"time = "+time );
+		Log.info(getClass().getSimpleName(),"drip = "+drip );
+		Log.info(getClass().getSimpleName(),"rssi = "+rssi );
+		Log.info(getClass().getSimpleName(),"ip = "+ip );
 		
 		
 		request.setAttribute("status", status);
@@ -62,7 +62,7 @@ public class UploadDataAction extends ActionSupport {
 		
 		UploadService service = new UploadService();
 		boolean status = service.checkIbeaconStatus(ibeaconId,"READY");
-		Log.info(getClass(), ibeaconId+ " 是否已在READY狀態 = "+status);
+		Log.info(getClass().getSimpleName(), ibeaconId+ " 是否已在READY狀態 = "+status);
 		if(status==true){
 			service.updateIbeaconStatus(ibeaconId,"READY","WORKING");
 			service.updatePatientSubStatus(ibeaconId, "READY", "WORKING");

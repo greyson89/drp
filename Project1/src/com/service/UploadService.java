@@ -14,7 +14,7 @@ public class UploadService {
 		
 		IbeaconDaoImpl dao = new IbeaconDaoImpl();
 		String temp = dao.checkIbeaconStatus(ibeaconId);
-		Log.info(getClass(), "status = "+status +"equal test   temp = "+temp );
+		Log.info(getClass().getSimpleName(), "status = "+status +"equal test   temp = "+temp );
 		System.out.println("temp = "+temp);
 		if(temp.equals(status)){
 			return true;
@@ -30,26 +30,36 @@ public class UploadService {
 		BigDecimal rssi = new BigDecimal(tRssi);
 		
 		IbeaconDaoImpl dao = new IbeaconDaoImpl();
-
-		//TODO 取得DB內上次的紀錄，用來計算流速
-		IbeaconLog preData = dao.loadPreIbeaconLog(ibeaconId,drip,timeClock,0);
-		BigDecimal preDrip ;
-		int preTimeClock ;
+		
 		//TODO 01/10檢查重複資料
-		
-		
-		if(preData==null){
-			Log.info(getClass(), "無前次 ibeacon log 資料");
-			preDrip = BigDecimal.ZERO;
-			preTimeClock = 0;
+		IbeaconLog sameData = dao.loadIbeaconLog(ibeaconId,drip,timeClock,0,"SAME");
+		if(sameData !=null){
+			//已存在同滴數同timeClock的資料 新增一筆相同(rssi,rssiIp差異)的資料
+			
+			dao.insertIbeaconLog(ibeaconId,drip,timeClock,sameData.getSpeed(),rssi,ip);
 		}else{
-			Log.info(getClass(), "有前次 ibeacon log 資料");
-			preDrip =  preData.getDrip() ;
-			preTimeClock = preData.getTimeClock();
+			//不存在同滴數同timeClock的資料，取上個timeClock來計算流速
+			IbeaconLog preData = dao.loadIbeaconLog(ibeaconId,drip,timeClock,0,"PRE");
+			BigDecimal preDrip ;
+			int preTimeClock ;
+			
+			
+			if(preData==null){
+				Log.info(getClass().getSimpleName(), "無前次 ibeacon log 資料");
+				preDrip = BigDecimal.ZERO;
+				preTimeClock = 0;
+			}else{
+				Log.info(getClass().getSimpleName(), "有前次 ibeacon log 資料");
+				preDrip =  preData.getDrip() ;
+				preTimeClock = preData.getTimeClock();
+			}
+			
+			BigDecimal speed = drip.subtract(preDrip).divide(new BigDecimal( new Integer(timeClock-preTimeClock).toString() ) );
+			dao.insertIbeaconLog(ibeaconId,drip,timeClock,speed,rssi,ip);
 		}
 		
-		BigDecimal speed = drip.subtract(preDrip).divide(new BigDecimal( new Integer(timeClock-preTimeClock).toString() ) );
-		dao.insertIbeaconLog(ibeaconId,drip,timeClock,speed,rssi,ip);
+
+		
 		
 		
 		

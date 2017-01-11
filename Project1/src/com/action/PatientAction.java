@@ -54,10 +54,10 @@ public class PatientAction extends ActionSupport {
 
 	public String addPatient() {
 
-		Log.info(getClass(),"new add patient");
+		Log.info(getClass().getSimpleName(),"new add patient");
 		PatientService service = new PatientService();
 		String result = service.addPatient(patientId, patientName, idcardNumber, phoneNumber);
-		Log.info(getClass(),"new add patient result = "+result);
+		Log.info(getClass().getSimpleName(),"new add patient result = "+result);
 		if(result.indexOf("ERROR")!=-1){
 			msg=result;
 			return "addPatientFail";
@@ -69,10 +69,10 @@ public class PatientAction extends ActionSupport {
 
 	public String editPatient() {
 
-		Log.info(getClass(),"edit patient");
+		Log.info(getClass().getSimpleName(),"edit patient");
 		HttpServletRequest request = ServletActionContext.getRequest();
 		PatientService service = new PatientService();
-		Log.info(getClass(),"edit patient id = "+id);
+		Log.info(getClass().getSimpleName(),"edit patient id = "+id);
 		String result = service.editPatient(id,patientId, patientName, idcardNumber, phoneNumber);
 		if(result.indexOf("ERROR")!=-1){
 			msg=result;

@@ -12,4 +12,13 @@ public class Log {
 		System.out.println(result);
 	}
 	
+	public static void info(String s,String val){
+		
+		StringBuffer result = new StringBuffer();
+		result.append(s);
+		result.append(" => ");
+		result.append(val);
+		System.out.println(result);
+	}
+	
 }

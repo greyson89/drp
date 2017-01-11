@@ -19,7 +19,7 @@ public class IbeaconDaoImpl {
 
 	public String checkIbeaconStatus(String ibeaconId) throws SQLException {
 		
-		Log.info(getClass(), "ibeaconId = "+ibeaconId);
+		Log.info(getClass().getSimpleName(), "ibeaconId = "+ibeaconId);
 		StringBuffer sql = new StringBuffer();
 		sql.append("select status from t_drp_ibeacon_status   ");
 		sql.append(" where ibeacon_id = '"+ibeaconId+"'  ");
@@ -57,13 +57,13 @@ public class IbeaconDaoImpl {
 		
 		StringBuffer sql = new StringBuffer();
 		sql.append("update t_drp_ibeacon_status  set status='"+newStatus+"' where    ibeacon_id ='"+ibeaconId+"'   and  status='"+oldStatus+"'  ");
-		Log.info(getClass(), sql.toString());
+		Log.info(getClass().getSimpleName(), sql.toString());
 		PreparedStatement ps = null;
 		Connection conn = Util.getConn();
 		try{
 			
 			//TODO 異常 暫時不理會
-			Log.info(getClass(), "ibeacon_id="+ibeaconId);
+			Log.info(getClass().getSimpleName(), "ibeacon_id="+ibeaconId);
 			ps = conn.prepareStatement(sql.toString());
 			
 			
@@ -92,8 +92,8 @@ public class IbeaconDaoImpl {
 		Connection conn = Util.getConn();
 		try{
 			
-			Log.info(getClass(), sql.toString());
-			Log.info(getClass(), "ibeacon_id="+ibeaconId);
+			Log.info(getClass().getSimpleName(), sql.toString());
+			Log.info(getClass().getSimpleName(), "ibeacon_id="+ibeaconId);
 			ps = conn.prepareStatement(sql.toString());
 			ps.setString(1, ibeaconId);
 			ps.setBigDecimal(2, speed);
@@ -117,23 +117,29 @@ public class IbeaconDaoImpl {
 		
 	}
 
-	public IbeaconLog loadPreIbeaconLog(String ibeaconId, BigDecimal drip, int timeClock, int historyFlag) throws SQLException {
+	
+	public IbeaconLog loadIbeaconLog(String ibeaconId, BigDecimal drip, int timeClock, int historyFlag,String logTime) throws SQLException {
 		//history_flag = 0
 		
 		
 		StringBuffer sql = new StringBuffer();
 		sql.append(" select * from t_drp_ibeacon_log  ");
 		sql.append(" where  ibeacon_id = ?  ");
-		sql.append(" and drip < ?   ");
-		sql.append(" and time_clock < ?  ");
+		if(logTime.equals("PRE")){
+			sql.append(" and drip < ?   ");
+			sql.append(" and time_clock < ?  ");
+		}else if(logTime.equals("SAME")){
+			sql.append(" and drip = ?   ");
+			sql.append(" and time_clock = ?  ");
+		}
 		sql.append(" and history_flag = ?   ");
 		sql.append(" order by id desc");
 		
 		PreparedStatement ps = null;
 		Connection conn = Util.getConn();
 		try{
-			Log.info(getClass(), sql.toString());
-			Log.info(getClass(), "ibeacon_id="+ibeaconId);
+			Log.info(getClass().getSimpleName(), sql.toString());
+			Log.info(getClass().getSimpleName(), "ibeacon_id="+ibeaconId);
 			ps = conn.prepareStatement(sql.toString());
 			ps.setString(1, ibeaconId);
 			ps.setBigDecimal(2, drip);

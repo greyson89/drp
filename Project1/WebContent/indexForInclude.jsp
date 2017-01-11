@@ -44,14 +44,22 @@ $(document).ready(function(){
 <body bgcolor='white'>
 
   
-<div class="container" style="margin:20px">
+<!-- <div class="container" style="margin:20px"> -->
 <!-- <div class="container-fluid" style="margin:20px"> -->
 <div class="row">
-	<jsp:include page="indexForInclude.jsp" />
-</div>
-</div>
-
-
+	<div class="col-xs-4 col-md-4">
+		<ul class="list-group">
+	      <li class="list-group-item"><a href="${main}" class="list-group-item">首頁</a></li>
+	      <li class="list-group-item"><a href="${monitor }" class="list-group-item">X即時監控</a></li>
+	      <li class="list-group-item"><a href="${patient }" class="list-group-item">病患資料</a></li>
+	      <li class="list-group-item"><a href="${ibeacon }" class="list-group-item">ibeacon配對管理</a></li>
+	      <li class="list-group-item"><a href="${uploadTest }" class="list-group-item">上傳測試</a></li>
+	      <li class="list-group-item"><a href="#" class="list-group-item">X歷史紀錄</a></li>
+	      <li class="list-group-item"><a href="#" class="list-group-item">X位置圖</a></li>
+	    </ul>
+	</div>		
+<!-- </div> -->
+<!-- </div> -->
 
 
 
