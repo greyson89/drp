@@ -29,20 +29,41 @@
 		<h3>rssi = ${ rssi}</h3>
 		<h3>ip = ${ ip}</h3>
 	</div>
-</div>
-</div>
-
-		<td width="500px">
-				
-				
-				<s:form action="uploadConfirm"  >
-					ibeaconId = <s:textfield name="ibeaconId"/>
-					<s:submit />
-				</s:form>
-				<br/>
-				
-				<s:form action="upload"  >
-					<table>
+	<div class="col-xs-8 col-md-8">
+		<s:form action="uploadConfirm"  >
+		
+		<table class="table">
+			<thead>
+				<tr>
+					<td>
+						<label>啟動ibeacon</label>
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						ibeaconId = <s:textfield name="ibeaconId"/>
+					</td>
+					<td>
+						<s:submit />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</s:form>
+		<br/>
+		
+		<s:form action="upload"  >
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							傳送模擬資料
+						</th>
+					</tr>				
+				</thead>
+				<tbody>
 					<tr>
 						<td>id = <s:textfield name="id"/>	</td>
 						<td>drip = <s:textfield name="drip"/></td>
@@ -55,14 +76,18 @@
 						<td>ip = <s:textfield name="ip"/></td>
 						<td><s:submit /></td>
 					</tr>
-					</table>
-				</s:form>
-		</td>
-		<td width="224px">
+				</tbody>
 		
-		</td>
-	</tr>
-	</table>
+			</table>
+		</s:form>
+	
+	</div>
+	
+</div>
+</div>
+
+	
+
 	
 </body>
 </html>
