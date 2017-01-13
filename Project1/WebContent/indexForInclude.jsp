@@ -47,10 +47,10 @@ $(document).ready(function(){
 <!-- <div class="container" style="margin:20px"> -->
 <!-- <div class="container-fluid" style="margin:20px"> -->
 <div class="row">
-	<div class="col-xs-4 col-md-4">
+	<div class="col-xs-4 col-md-2">
 		<ul class="list-group">
 	      <li class="list-group-item"><a href="${main}" class="list-group-item">首頁</a></li>
-	      <li class="list-group-item"><a href="${monitor }" class="list-group-item">X即時監控</a></li>
+	      <li class="list-group-item"><a href="${monitor }" class="list-group-item">即時監控</a></li>
 	      <li class="list-group-item"><a href="${patient }" class="list-group-item">病患資料</a></li>
 	      <li class="list-group-item"><a href="${ibeacon }" class="list-group-item">ibeacon配對管理</a></li>
 	      <li class="list-group-item"><a href="${uploadTest }" class="list-group-item">上傳測試</a></li>
