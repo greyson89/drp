@@ -32,7 +32,9 @@ $(document).ready(function(){
 <s:url action="mainAction" var="ibeacon" >
 	<s:param name="actionType">ibeacon</s:param>
 </s:url>
-<s:url action="uploadTest" var="uploadTest"/>
+<s:url action="mainAction" var="uploadPage">
+	<s:param name="actionType">upload</s:param>
+</s:url>
 
 
 
@@ -48,7 +50,7 @@ $(document).ready(function(){
 	      <li class="list-group-item"><a href="${monitor }" class="list-group-item">即時監控</a></li>
 	      <li class="list-group-item"><a href="${patient }" class="list-group-item">病患資料</a></li>
 	      <li class="list-group-item"><a href="${ibeacon }" class="list-group-item">點滴注射管理</a></li>
-	      <li class="list-group-item"><a href="${uploadTest }" class="list-group-item">上傳測試</a></li>
+	      <li class="list-group-item"><a href="${uploadPage }" class="list-group-item">上傳測試</a></li>
 	      <li class="list-group-item"><a href="#" class="list-group-item">X歷史紀錄</a></li>
 	      <li class="list-group-item"><a href="#" class="list-group-item">X位置圖</a></li>
 	    </ul>

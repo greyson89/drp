@@ -55,6 +55,7 @@
     		<result name="monitor">/monitor.jsp</result>
     		<result name="patient">/patient.jsp</result>
     		<result name="ibeacon">/ibeacon.jsp</result>
+    		<result name="upload">/uploadTest.jsp</result>
     	</action>
     	
     	
@@ -97,24 +98,7 @@
     		<result name="notFound">/patient.jsp</result>
     	</action>
     	
-    	
-<!--     	<action name="refreshMonitor" class="com.action.MonitorAction" > -->
-<!--     		<result type="json"></result> -->
-<!--     	</action> -->
-    	
-    	
-    	
-    	
-    	
-    	
-    	<action name="second" class="com.action.MainAction">
-    		<result name="page2">/page2.jsp</result>
-    	</action>
-    
-    
-    
-    </package>
-    
+     </package>
     
     
      <package name="ajax" extends="json-default">

@@ -39,6 +39,8 @@ public class MainAction extends ActionSupport {
 			return "patient";
 		}else if(actionType.equals("ibeacon")){
 			return "ibeacon";
+		}else if(actionType.equals("upload")){
+			return "upload";
 		}else{
 			return "main";
 		}

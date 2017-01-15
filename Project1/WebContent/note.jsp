@@ -15,7 +15,7 @@
 5.病患舊資料條列並帶回ibeacon設定畫面
 6.rssi與定位
 
-
+ibeaconid,drip,rssi,clock都是16進位
 
 *設定期間資料儲存
 *判斷瞬間流速需要insert_time與現在時間
