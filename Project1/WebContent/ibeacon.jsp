@@ -6,19 +6,9 @@
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-	<link rel="icon" href="/dir/favicon.ico" mce_href="icon/favicon.ico" type="image/x-icon" > 
-	<link rel="shortcut icon" href="icon/favicon.ico"" mce_href="icon/favicon.ico" type="image/x-icon"> 
-<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="js/js/jquery-3.1.1.min.js"></script>
-  <script src="bootstrap/js/bootstrap.js"></script>
-  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.css">
+<jsp:include page="importFile_Lib.jsp" />
 <title>點滴注射管理</title>
 </head>
-
-
 
 
 <script type="text/javascript">
@@ -82,6 +72,8 @@ $(document).ready(function(){
 
 
 
+
+
 <body>
 
 <div class="container" style="margin:20px">
@@ -99,23 +91,27 @@ $(document).ready(function(){
 <%-- 			<s:textfield name="searchPatientId" required="true" class="form-control" placeholder="病號"/> --%>
 <!-- 			<button type="submit" class="btn btn-default">查詢</button> -->
 <!-- 			test<br/> -->
+			<label>讀取  病患過往資料<font color="red">${searchResult}</font></label>
+			
+			<button type="button" class="btn btn-default">讀取資料</button>
+			<label>病號</label><s:textfield name="searchPatientId" required="true"/>
+			<s:submit  value="讀取資料" cssClass="btn btn-default" />
 			
 			
 			<table class="table" id="table">
 				<thead>
 					<tr>
 						<th>
-							<label>讀取  病患過往資料<font color="red">${searchResult}</font></label>
+							
 						</th>
 						<th>
-							<label>病號</label>
-							<s:textfield name="searchPatientId" required="true"/>
+							
 						</th>
 						<th>
-							<s:textfield name="searchRunId"   />
+							
 						</th>
 						<th>
-							<s:submit  value="讀取資料" />
+							
 						</th>
 					</tr>
 				</thead>
@@ -180,7 +176,7 @@ $(document).ready(function(){
 					<tr>
 						<td>
 							<br/>
-							<s:submit  value="新增"  method="setIbeacon"/>
+							<s:submit  value="新增"  method="setIbeacon" cssClass="btn btn-default"/>
 	<%-- 										<s:submit  value="修改"  method="editPatient"/> --%>
 						</td>
 						<td>
@@ -198,4 +194,13 @@ $(document).ready(function(){
 
 
 </body>
+
+
+
+
+
+
+
+
+
 </html>

@@ -4,16 +4,10 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
-	<link rel="icon" href="/dir/favicon.ico" mce_href="icon/favicon.ico" type="image/x-icon" > 
-	<link rel="shortcut icon" href="icon/favicon.ico"" mce_href="icon/favicon.ico" type="image/x-icon"> 
-<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="js/js/jquery-3.1.1.min.js"></script>
-  <script src="bootstrap/js/bootstrap.js"></script>
-  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.css">
+<jsp:include page="importFile_Lib.jsp" />
 <title>即時監控</title>
 </head>
+
 
 <script type="text/javascript">
 refreshTime = 30000;
@@ -143,4 +137,10 @@ $(document).ready(function(){
 </div>
 
 </body>
+
+
+
+
+
+
 </html>

@@ -77,7 +77,10 @@ public class UploadDataAction extends ActionSupport {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		Map<String,String[]> param = request.getParameterMap();
 		for(String key : param.keySet()){
-			Log.info(getClass(), key+" "+param.get(key).toString());
+			for(String val : param.get(key)){
+				Log.info(getClass(), key+" "+val);
+				Log.info(getClass(), key+" "+val);
+			}
 		}
 		
 		Log.info(getClass(), "android connect success "+(new Date()).toString());

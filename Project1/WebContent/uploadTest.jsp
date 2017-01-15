@@ -5,15 +5,8 @@
 <html>
 
 <head>
-	<link rel="icon" href="/dir/favicon.ico" mce_href="icon/favicon.ico" type="image/x-icon" > 
-	<link rel="shortcut icon" href="icon/favicon.ico"" mce_href="icon/favicon.ico" type="image/x-icon"> 
+<jsp:include page="importFile_Lib.jsp" />
   <title>上傳測試</title>
-  <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="js/js/jquery-3.1.1.min.js"></script>
-  <script src="bootstrap/js/bootstrap.js"></script>
-  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.css">
 </head>
 <body>
 
