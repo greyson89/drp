@@ -5,6 +5,8 @@
 <html>
 
 <head>
+	<link rel="icon" href="/dir/favicon.ico" mce_href="icon/favicon.ico" type="image/x-icon" > 
+	<link rel="shortcut icon" href="icon/favicon.ico"" mce_href="icon/favicon.ico" type="image/x-icon"> 
   <title>首頁 - 點滴監控系統</title>
   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1">

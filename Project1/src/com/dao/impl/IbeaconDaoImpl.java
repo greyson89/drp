@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 
 import com.model.IbeaconLog;
 import com.model.PatientSub;
@@ -99,7 +100,7 @@ public class IbeaconDaoImpl {
 			ps.setBigDecimal(2, speed);
 			ps.setBigDecimal(3, drip);
 			ps.setInt(4,timeClock);
-			ps.setDate(5, new Date(new java.util.Date().getTime()));
+			ps.setTimestamp(5, new java.sql.Timestamp(Calendar.getInstance().getTime().getTime())); 
 			ps.setString(6,ip);
 			ps.setBigDecimal(7, rssi);
 			ps.setInt(8, 0);

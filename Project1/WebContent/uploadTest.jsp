@@ -5,6 +5,8 @@
 <html>
 
 <head>
+	<link rel="icon" href="/dir/favicon.ico" mce_href="icon/favicon.ico" type="image/x-icon" > 
+	<link rel="shortcut icon" href="icon/favicon.ico"" mce_href="icon/favicon.ico" type="image/x-icon"> 
   <title>上傳測試</title>
   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,13 +17,13 @@
 </head>
 <body>
 
-<div class="container" style="margin:20px">
-<!-- <div class="container-fluid" style="margin:20px"> -->
+<!-- <div class="container" style="margin:20px"> -->
+<div class="container-fluid" style="margin:20px">
 <div class="row">
 
 	<jsp:include page="indexForInclude.jsp" />
 
-	<div class="col-xs-8 col-md-8">
+	<div class="col-xs-6 col-md-8">
 		<h3>是否存入DB = ${status }</h3>
 		<h3>id = ${ id}</h3>
 		<h3>time =  ${ time }</h3>
@@ -65,11 +67,11 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>id = <s:textfield name="id"/>	</td>
+						<td>id = <s:textfield name="id"/></td>
 						<td>drip = <s:textfield name="drip"/></td>
 					</tr>
 					<tr>
-						<td>time = <s:textfield name="time"/></td>
+						<td>timeClock = <s:textfield name="time"/></td>
 						<td>rssi = <s:textfield name="rssi"/><br/></td>
 					</tr>
 					<tr>

@@ -1,6 +1,7 @@
 package com.action;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -73,6 +74,13 @@ public class UploadDataAction extends ActionSupport {
 	
 	public String uploadTestPage(){
 		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Map<String,String[]> param = request.getParameterMap();
+		for(String key : param.keySet()){
+			Log.info(getClass(), key+" "+param.get(key).toString());
+		}
+		
+		Log.info(getClass(), "android connect success "+(new Date()).toString());
 		return "success";
 	}
 	

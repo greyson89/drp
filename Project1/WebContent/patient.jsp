@@ -5,6 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<link rel="icon" href="/dir/favicon.ico" mce_href="icon/favicon.ico" type="image/x-icon" > 
+	<link rel="shortcut icon" href="icon/favicon.ico"" mce_href="icon/favicon.ico" type="image/x-icon"> 
   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="js/js/jquery-3.1.1.min.js"></script>
@@ -23,7 +25,7 @@
 
 	<jsp:include page="indexForInclude.jsp" />
 
-	<div class="col-xs-8 col-md-8">
+	<div class="col-xs-6 col-md-8">
 		<h1>病患資料</h1>
 		<s:form action="load_patient" theme="simple">
 		<table class="table">
@@ -97,25 +99,7 @@
 						</td>
 						
 					</tr>	
-					<tr>
-						<td>
-							<label class="">床號</label><br/>
-					      	<s:textfield name="bedId" />
-						</td>
-						<td>
-<!-- 										留空 -->
-						</td>
-					</tr>		
-					<tr>
-						<td>
-							<label  class="">藥品1</label><br/>
-					      	<s:textfield name="drug1" />
-						</td>
-						<td>
-							<label  class="">藥品1容量</label><br/>
-							<s:textfield name="drug1cc" />
-						</td>
-					</tr>	
+									
 								
 					<tr>
 						<td>

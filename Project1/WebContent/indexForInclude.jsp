@@ -5,6 +5,9 @@
 <html>
 
 <head>
+	<link rel="icon" href="/dir/favicon.ico" mce_href="icon/favicon.ico" type="image/x-icon" > 
+	<link rel="shortcut icon" href="icon/favicon.ico"" mce_href="icon/favicon.ico" type="image/x-icon"> 
+
   <title>首頁 - 點滴監控系統</title>
   <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,12 +50,12 @@ $(document).ready(function(){
 <!-- <div class="container" style="margin:20px"> -->
 <!-- <div class="container-fluid" style="margin:20px"> -->
 <div class="row">
-	<div class="col-xs-4 col-md-2">
+	<div class="col-xs-6 col-md-2">
 		<ul class="list-group">
 	      <li class="list-group-item"><a href="${main}" class="list-group-item">首頁</a></li>
 	      <li class="list-group-item"><a href="${monitor }" class="list-group-item">即時監控</a></li>
 	      <li class="list-group-item"><a href="${patient }" class="list-group-item">病患資料</a></li>
-	      <li class="list-group-item"><a href="${ibeacon }" class="list-group-item">ibeacon配對管理</a></li>
+	      <li class="list-group-item"><a href="${ibeacon }" class="list-group-item">點滴注射管理</a></li>
 	      <li class="list-group-item"><a href="${uploadTest }" class="list-group-item">上傳測試</a></li>
 	      <li class="list-group-item"><a href="#" class="list-group-item">X歷史紀錄</a></li>
 	      <li class="list-group-item"><a href="#" class="list-group-item">X位置圖</a></li>

@@ -64,7 +64,7 @@ public class PatientAction extends ActionSupport {
 		}
 		HttpServletRequest request = ServletActionContext.getRequest();
 
-		return "addPatientSucess";
+		return "addPatientSuccess";
 	}
 
 	public String editPatient() {
@@ -78,7 +78,7 @@ public class PatientAction extends ActionSupport {
 			msg=result;
 			return "editPatientFail";
 		}
-		return "editPatientSucess";
+		return "editPatientSuccess";
 	}
 
 	

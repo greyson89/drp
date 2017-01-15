@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.model.PatientSub;
 import com.model.Patient;
@@ -241,7 +242,8 @@ public class PatientDaoImpl {
 	        ps.setBigDecimal(7,drugCc.get(0));
 	        ps.setString(8,drug.get(1));
 	        ps.setBigDecimal(9,drugCc.get(1));
-	        ps.setDate(10, new Date(new java.util.Date().getTime()));
+//	        ps.setDate(10, new Date(new java.util.Date().getTime()));
+	        ps.setTimestamp(10, new java.sql.Timestamp(Calendar.getInstance().getTime().getTime())); 
 	        ps.setString(11, "READY");
 	        
 	        ps.addBatch();
