@@ -77,11 +77,7 @@
     		<result name="setIbeaconSuccess">/ibeaconSuccess.jsp</result>
     		<result name="setIbeaconFail">/ibeaconFail.jsp</result>
     	</action>
-    	<action name="loadIbeaconHistory" class="com.action.IbeaconAction" method="loadIbeaconHistory" >
-    		
-    		<result name="loadIbeaconSuccess">/ibeacon.jsp</result>
-    		<result name="loadIbeaconFail">/ibeacon.jsp</result>
-    	</action>
+ 
     	
     	
     	
@@ -98,13 +94,20 @@
     		<result name="notFound">/patient.jsp</result>
     	</action>
     	
+
+    	
+    	
      </package>
     
     
-     <package name="ajax" extends="json-default">
-      <action name="refreshMonitor" class="com.action.MonitorAction">
-        <result type="json"></result>
-      </action>
+     <package name="ajax" extends="json-default" >
+	      <action name="refreshMonitor" class="com.action.MonitorAction">
+	        <result type="json"></result>
+	      </action>
+	      <action name="loadPatientHistory" class="com.action.IbeaconAction" method="loadIbeaconHistory" >
+	        <result type="json"></result>
+	      </action>
+      
     </package>
     
     
