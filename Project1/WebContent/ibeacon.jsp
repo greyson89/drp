@@ -30,37 +30,44 @@ $(document).ready(function(){
 	
 });
 
+function loadPatientHistory(){
+		alert("test");
+		$.ajax({
+	  	type:"post",
+	  	url:"loadPatientHistory",
+	  	dataType:"json",
+	  	data:{id:1} , 
+	  	success:function(data){
+// 		  		var obj = JSON.parse(data );
+			var myList = data.list;
 
-// 		$.ajax({
-// 		  	type:"post",
-// 		  	url:"refreshMonitor",
-// 		  	dataType:"json",
-// 		  	success:function(data){
-// // 		  		var obj = JSON.parse(data );
+			$("#table>tbody").remove();
+			$("#table").append("<tbody></tbody>");
+			$(myList).each(function(index){
+			
+				ibeaconId = "<td>"+myList[index].ibeaconId+"</td>";
+				patientId = "<td>"+myList[index].patientId+"</td>";
+				patientName = "<td>"+myList[index].patientName+"</td>";
+				bedId = "<td>"+myList[index].bedId+"</td>";
+				total = "<td>"+myList[index].total+"</td>";
+				estSpeed = "<td>"+myList[index].estSpeed+"</td>";
+				estEndTime = "<td>"+myList[index].estEndTime+"</td>";
+				remain = "<td>"+myList[index].remain+"</td>";
+				realSpeed = "<td>"+myList[index].realSpeed+"</td>";
+				realEndTime = "<td>"+myList[index].realEndTime+"</td>";
+				$('#table>tbody').append("<tr>"+ibeaconId+patientId+patientName+bedId+total+estSpeed+estEndTime+remain+realSpeed+realEndTime+"</tr>");
 
-// 				var myList = data.list;
+			});
+		
+	  	}
+  
+});
+	
+	
+	
+}
 
-// 				$("#table>tbody").remove();
-// 				$("#table").append("<tbody></tbody>");
-// 				$(myList).each(function(index){
-					
-// 					ibeaconId = "<td>"+myList[index].ibeaconId+"</td>";
-// 					patientId = "<td>"+myList[index].patientId+"</td>";
-// 					patientName = "<td>"+myList[index].patientName+"</td>";
-// 					bedId = "<td>"+myList[index].bedId+"</td>";
-// 					total = "<td>"+myList[index].total+"</td>";
-// 					estSpeed = "<td>"+myList[index].estSpeed+"</td>";
-// 					estEndTime = "<td>"+myList[index].estEndTime+"</td>";
-// 					remain = "<td>"+myList[index].remain+"</td>";
-// 					realSpeed = "<td>"+myList[index].realSpeed+"</td>";
-// 					realEndTime = "<td>"+myList[index].realEndTime+"</td>";
-// 					$('#table>tbody').append("<tr>"+ibeaconId+patientId+patientName+bedId+total+estSpeed+estEndTime+remain+realSpeed+realEndTime+"</tr>");
 
-// 				});
-				
-// 		  	}
-		  
-// 	  });
 	 
 	 
 
@@ -91,11 +98,12 @@ $(document).ready(function(){
 <%-- 			<s:textfield name="searchPatientId" required="true" class="form-control" placeholder="病號"/> --%>
 <!-- 			<button type="submit" class="btn btn-default">查詢</button> -->
 <!-- 			test<br/> -->
-			<label>讀取  病患過往資料<font color="red">${searchResult}</font></label>
+			<label>讀取  病號</label>
+			<button type="button" class="btn btn-default" onclick="loadPatientHistory()">讀取資料</button>
 			
-			<button type="button" class="btn btn-default">讀取資料</button>
-			<label>病號</label><s:textfield name="searchPatientId" required="true"/>
-			<s:submit  value="讀取資料" cssClass="btn btn-default" />
+			
+<%-- 			<label>病號</label><s:textfield name="searchPatientId" required="true"/> --%>
+<%-- 			<s:submit  value="讀取資料" cssClass="btn btn-default" /> --%>
 			
 			
 			<table class="table" id="table">
