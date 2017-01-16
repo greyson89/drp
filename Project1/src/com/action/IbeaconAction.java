@@ -2,11 +2,16 @@ package com.action;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Map;
 
-import com.model.PatientSub;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.service.IbeaconSerivce;
 import com.service.PatientService;
+import com.uilts.Log;
 
 public class IbeaconAction extends ActionSupport {
 
@@ -27,26 +32,37 @@ public class IbeaconAction extends ActionSupport {
 	
 	public String loadIbeaconHistory() {
 
-		if (searchPatientId.equals("")) {
-			searchResult = "未填入病號";
-			return "loadIbeaconFail";
+		HttpServletRequest request = ServletActionContext.getRequest();
+		Map<String, String[]> param = request.getParameterMap();
+		for(String key : param.keySet()){
+			for(String val : param.get(key)){
+				Log.info(getClass(), key+" "+val);
+				Log.info(getClass(), key+" "+val);
+			}
 		}
-
-		IbeaconSerivce service = new IbeaconSerivce();
-		PatientSub model = service.loadHistory(searchPatientId, searchRunId);
-		if (model == null) {
-			searchResult = "該資料不存在";
-			return "loadIbeaconFail";
-		}
-		patientId = model.getPatientId();
-		speed = model.getSpeed();
-		drugId1 = model.getDrugId1();
-		drugCc1 = model.getDrugCc1();
-		drugId2 = model.getDrugId2();
-		drugCc2 = model.getDrugCc2();
 		
-
-		return "loadIbeaconSuccess";
+		return "success";
+		
+//		if (searchPatientId.equals("")) {
+//			searchResult = "未填入病號";
+//			return "loadIbeaconFail";
+//		}
+//
+//		IbeaconSerivce service = new IbeaconSerivce();
+//		PatientSub model = service.loadHistory(searchPatientId, searchRunId);
+//		if (model == null) {
+//			searchResult = "該資料不存在";
+//			return "loadIbeaconFail";
+//		}
+//		patientId = model.getPatientId();
+//		speed = model.getSpeed();
+//		drugId1 = model.getDrugId1();
+//		drugCc1 = model.getDrugCc1();
+//		drugId2 = model.getDrugId2();
+//		drugCc2 = model.getDrugCc2();
+//		
+//
+//		return "loadIbeaconSuccess";
 	}
 	
 	
