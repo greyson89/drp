@@ -1,7 +1,9 @@
 package com.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class PatientSub {
 
@@ -11,19 +13,16 @@ public class PatientSub {
 	private String bedId;
 	private BigDecimal speed;
 	private Date insertTime;
-	private int status;
-	
-	
-	private String drugId1;
-	private BigDecimal drugCc1;
-	private String drugId2;
-	private BigDecimal drugCc2;
+	private String status;
 	
 	
 	
+	private String drugId;
+	private String drugCc;
+	private int drugQuantity;
 	
-	
-	
+	private List<String> drugIdList = new ArrayList<String>();
+	private List<String> drugCcList = new ArrayList<String>();
 	
 	
 	
@@ -67,35 +66,42 @@ public class PatientSub {
 	public void setInsertTime(Date insertTime) {
 		this.insertTime = insertTime;
 	}
-	public int getStatus() {
+	
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getDrugId1() {
-		return drugId1;
+	public String getDrugId() {
+		return drugId;
 	}
-	public void setDrugId1(String drugId1) {
-		this.drugId1 = drugId1;
+	public void setDrugId(String drugId) {
+		this.drugId = drugId;
 	}
-	public BigDecimal getDrugCc1() {
-		return drugCc1;
+	public String getDrugCc() {
+		return drugCc;
 	}
-	public void setDrugCc1(BigDecimal drugCc1) {
-		this.drugCc1 = drugCc1;
+	public void setDrugCc(String drugCc) {
+		this.drugCc = drugCc;
 	}
-	public String getDrugId2() {
-		return drugId2;
+	public int getDrugQuantity() {
+		return drugQuantity;
 	}
-	public void setDrugId2(String drugId2) {
-		this.drugId2 = drugId2;
+	public void setDrugQuantity(int drugQuantity) {
+		this.drugQuantity = drugQuantity;
 	}
-	public BigDecimal getDrugCc2() {
-		return drugCc2;
+	public List<String> getDrugIdList() {
+		return drugIdList;
 	}
-	public void setDrugCc2(BigDecimal drugCc2) {
-		this.drugCc2 = drugCc2;
+	public void setDrugIdList(List<String> drugIdList) {
+		this.drugIdList = drugIdList;
+	}
+	public List<String> getDrugCcList() {
+		return drugCcList;
+	}
+	public void setDrugCcList(List<String> drugCcList) {
+		this.drugCcList = drugCcList;
 	}
 	
 	

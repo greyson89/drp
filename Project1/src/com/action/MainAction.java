@@ -41,6 +41,8 @@ public class MainAction extends ActionSupport {
 			return "ibeacon";
 		}else if(actionType.equals("upload")){
 			return "upload";
+		}else if(actionType.equals("history")){
+			return "history";
 		}else{
 			return "main";
 		}

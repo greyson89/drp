@@ -47,12 +47,20 @@
     
     
     <package name="test" extends="struts-default">
+    
+    
+    
     	<action name="mainAction" class="com.action.MainAction">
     		<result name="main">/index.jsp</result>
     		<result name="monitor">/monitor.jsp</result>
     		<result name="patient">/patient.jsp</result>
     		<result name="ibeacon">/ibeacon.jsp</result>
+    		<result name="upload">/uploadTest.jsp</result>
+    		<result name="history">/history.jsp</result>
     	</action>
+    	
+    	
+    	
     	<action name="upload" class="com.action.UploadDataAction">
     		<result name="success">/uploadTest.jsp</result>
     	</action>
@@ -71,16 +79,10 @@
     		<result name="setIbeaconFail">/ibeaconFail.jsp</result>
     	</action>
     	
-    	<action name="loadIbeaconHistory" class="com.action.IbeaconAction" method="loadIbeaconHistory" >
+		<action name="load_select_history" class="com.action.IbeaconAction" method="loadSelectHistory" >
+    		<result name="success">/ibeaconSuccess.jsp</result>
     		
-    		<result name="loadIbeaconSuccess">/ibeacon.jsp</result>
-    		<result name="loadIbeaconFail">/ibeacon.jsp</result>
     	</action>
-    	
-    	
-    	
-    	
-    	
     	
     	
     	
@@ -92,18 +94,28 @@
     		<result name="addPatientFail">/patientFail.jsp</result>
     		<result name="editPatientFail">/patientFail.jsp</result>
     	</action>
-    	
     	<action name="load_patient" class="com.action.PatientAction" method="loadPatient">
     		<result name="patient">/patient.jsp</result>
     		<result name="notFound">/patient.jsp</result>
     	</action>
     	
+
     	
-    	<action name="second" class="com.action.MainAction">
-    		<result name="page2">/page2.jsp</result>
-    	</action>
+    	
+     </package>
     
+    
+     <package name="ajax" extends="json-default" >
+     
+	      <action name="refreshMonitor" class="com.action.MonitorAction">
+	        <result type="json"></result>
+	      </action>
+	      <action name="loadPatientHistory" class="com.action.IbeaconAction" method="loadIbeaconHistory" >
+	        <result type="json"></result>
+	      </action>
+      
     </package>
+    
     
     <constant name="struts.ui.theme" value="simple"/>
     

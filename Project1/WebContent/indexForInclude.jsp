@@ -35,7 +35,9 @@ $(document).ready(function(){
 <s:url action="mainAction" var="uploadPage">
 	<s:param name="actionType">upload</s:param>
 </s:url>
-
+<s:url action="mainAction" var="history">
+	<s:param name="actionType">history</s:param>
+</s:url>
 
 
 <body bgcolor='white'>
@@ -51,15 +53,14 @@ $(document).ready(function(){
 	      <li class="list-group-item"><a href="${patient }" class="list-group-item">病患資料</a></li>
 	      <li class="list-group-item"><a href="${ibeacon }" class="list-group-item">點滴注射管理</a></li>
 	      <li class="list-group-item"><a href="${uploadPage }" class="list-group-item">上傳測試</a></li>
-	      <li class="list-group-item"><a href="#" class="list-group-item">X歷史紀錄</a></li>
+	      <li class="list-group-item"><a href="${history }" class="list-group-item">歷史紀錄查詢</a></li>
 	      <li class="list-group-item"><a href="#" class="list-group-item">X位置圖</a></li>
 	    </ul>
 	</div>		
+
+
 <!-- </div> -->
 <!-- </div> -->
-
-
-
 
 </body>
 

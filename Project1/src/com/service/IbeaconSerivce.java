@@ -1,20 +1,32 @@
 package com.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.dao.impl.IbeaconDaoImpl;
 import com.dao.impl.PatientDaoImpl;
 import com.model.PatientSub;
+import com.uilts.Log;
 
 public class IbeaconSerivce {
 	
-	public PatientSub loadHistory(String patientId,int runId){
+	public List<PatientSub> loadHistory(String patientId){
 		
 		PatientDaoImpl dao = new PatientDaoImpl();
 		
 
 		try {
-			return dao.loadHistory(patientId,runId);
+			List<PatientSub> modelList = dao.loadHistory(patientId);
+			for(PatientSub model : modelList){
+				String[] drugIdArray = model.getDrugId().split(",");
+				String[] drugCcArray = model.getDrugCc().split(",");
+				for(int i=0;i<model.getDrugQuantity();i++){
+					model.getDrugIdList().add(drugIdArray[i]);
+					model.getDrugCcList().add(drugCcArray[i]);
+				}
+			}
+			
+			return modelList;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -52,5 +64,6 @@ public class IbeaconSerivce {
 		
 		return "ERROR ibeacon狀態出現問題";
 	}
+	
 	
 }

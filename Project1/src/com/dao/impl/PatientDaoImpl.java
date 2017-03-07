@@ -9,9 +9,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import com.model.PatientSub;
 import com.model.Patient;
+import com.uilts.Log;
 import com.uilts.Util;
 
 public class PatientDaoImpl {
@@ -163,15 +165,11 @@ public class PatientDaoImpl {
 	
 	
 	
-	public PatientSub loadHistory(String patientId,int runId) throws SQLException{
-			
+	public List<PatientSub> loadHistory(String patientId) throws SQLException{
 			StringBuffer sql = new StringBuffer();
 			sql.append("select * from t_drp_patient_sub t where 1=1  ");
 			if(!patientId.equals("")){
 				sql.append("and patient_id='"+patientId+"' ");
-			}
-			if(runId!=0){
-				sql.append("and run_id='"+runId+"' ");
 			}
 			sql.append(" order by run_id asc");
 			
@@ -180,22 +178,26 @@ public class PatientDaoImpl {
 			try{
 				ps = conn.createStatement();
 				ResultSet result = ps.executeQuery(sql.toString());
-				PatientSub model = null;
 				
+				List<PatientSub> modelList = new ArrayList<PatientSub>();  
+				PatientSub model = null;
 				while(result.next()){
 					model = new PatientSub();
 					
 					model.setRunId( result.getInt("run_id") );
 					model.setPatientId( result.getString("patient_id") );
-	//				model.setIbeaconId();
-					model.setDrugId1( result.getString("drug_id1") );
-					model.setDrugCc1( result.getBigDecimal("drug_cc1") );
-					model.setDrugId2( result.getString("drug_id2") );
-					model.setDrugCc2( result.getBigDecimal("drug_cc2") );
+					model.setIbeaconId( result.getString("ibeacon_id"));
+					model.setBedId( result.getString("bed_id") ); 
 					model.setSpeed( result.getBigDecimal("speed") );
+					model.setDrugId( result.getString("drug_id"));
+					model.setDrugCc( result.getString("drug_cc"));
+					model.setDrugQuantity(result.getInt("drug_quantity"));
+					model.setInsertTime(result.getDate("insert_time"));
+					model.setStatus(result.getString("status"));
+					modelList.add(model);
 					
 				}
-				return model;
+				return modelList;
 			}catch(Exception e ){
 				e.printStackTrace();
 			}finally {
@@ -227,7 +229,8 @@ public class PatientDaoImpl {
 		
 		
 		StringBuffer sql = new StringBuffer();
-		sql.append("insert into t_drp_patient_sub(run_id,patient_id,ibeacon_id,bed_id,speed,drug_id1,drug_cc1,drug_id2,drug_cc2,insert_time,status) "); 
+		sql.append("insert into t_drp_patient_sub(run_id,patient_id,ibeacon_id,bed_id,speed,"
+				+ "drug_id1,drug_cc1,drug_id2,drug_cc2,insert_time,status) "); 
 		sql.append("values (?,?,?,?,?,?,?,?,?,?,?)  ");
 		PreparedStatement ps = null;
 		Connection conn = Util.getConn();
