@@ -1,0 +1,12 @@
+{
+	"name": "David",
+	"properties": {
+		"type": "SelfHosted",
+		"typeProperties": {
+			"linkedInfo": {
+				"resourceId": "/subscriptions/8b128465-da92-4a47-b891-24cc1dfefc84/resourcegroups/rgrp-msfwex01-infrastructure/providers/Microsoft.DataFactory/factories/datafactory-msfwex01-sharedintegrationruntime-devqa/integrationruntimes/ir-msfwex01-sharedintegrationruntime-devqa",
+				"authorizationType": "Rbac"
+			}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "linkedService1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "\\\\TWNTPE01-SRV-01\\tidata\\Marketing\\03 Trade Strategy\\10 Project BRIE",
+			"userId": "JTICORP\\Z_TPEDW_UAT",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2YjhjMzNlYy0yYjEwLTRiNmEtYWFkNy1mZTI3NWYzYjI2NjAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "David",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
